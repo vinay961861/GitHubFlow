@@ -1,0 +1,42 @@
+on: push
+jobs:
+  cocos-action:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/cocos-creator-github-action
+        id: setup-cocos
+        with:
+          cocos-version: "2.4.3"
+      - name: display directory after checkout
+        run: |
+          echo ${{ steps.setup-cocos.outputs.cocos-creator-path }}
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '2.7.18'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - uses: actions/checkout@v1
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - uses: actions/checkout@v1
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r19c
+      - run: |
+          echo ${{ steps.setup-ndk.outputs.ndk-path }}
+      - name: list project files
+        run: |
+          pwd
+          ls
+          echo $GITHUB_WORKSPACE
+      - name: execute build
+        run: |
+          sudo /Users/runner/hostedtoolcache/Creator/2.4.3/x64/Contents/MacOS/CocosCreator --force --path /Users/runner/work/hello/hello --build "platform=android;debug=true;autoCompile=true;startScene=db://assets/Scene/helloworld.fire;template=default;appABIs=['armeabi-v7a']"
