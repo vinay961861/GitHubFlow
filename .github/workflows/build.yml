@@ -1,7 +1,7 @@
 on: push
 jobs:
   cocos-action:
-    runs-on: windows-32
+    runs-on: windows -old
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/cocos-creator-github-action
