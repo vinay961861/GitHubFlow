@@ -39,4 +39,4 @@ jobs:
           echo $GITHUB_WORKSPACE
       - name: execute build
         run: |
-          sudo /Users/runner/hostedtoolcache/Creator/2.4.3/x64/Contents/MacOS/CocosCreator --force --path /Users/runner/work/hello/hello --build "platform=android;debug=true;autoCompile=true;startScene=db://assets/Scene/helloworld.fire;template=default;appABIs=['armeabi-v7a']"
+          C:\CocosDashboard_1.0.11\resources\.editors\Creator\2.4.3\CocosCreator.exe --force --path C:\GitHubWorkFlow --build "platform=android;debug=true;autoCompile=true;startScene=db://assets/Scene/helloworld.fire;template=default;appABIs=['armeabi-v7a']"
