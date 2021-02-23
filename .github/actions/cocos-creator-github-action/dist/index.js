@@ -41,8 +41,8 @@ const httpm = __importStar(__webpack_require__(925));
 exports.releaseUrl = 'https://creator-api.cocos.com/api/cocoshub/editor_version_list';
 function getPlatform() {
     const platform = process.platform;
-    if (platform == 'win32') {
-        return 'win32';
+    if (platform == 'win364') {
+        return 'win64';
     }
     if (platform == 'darwin') {
         return 'darwin';
